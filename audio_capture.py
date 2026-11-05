@@ -100,9 +100,6 @@ class _LoopbackSystemAudio:
 
     def _run(self, ready: threading.Event, failure: list):
         try:
-            if IS_WINDOWS:  # this thread talks to WASAPI, which is COM: initialise COM for it (multithreaded)
-                import ctypes
-                ctypes.windll.ole32.CoInitializeEx(None, 0)
             import soundcard as sc
 
             warnings.filterwarnings("ignore", message="data discontinuity")  # harmless WASAPI glitch report

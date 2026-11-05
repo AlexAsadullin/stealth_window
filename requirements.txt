@@ -1,0 +1,21 @@
+# One file for every OS: the markers after ";" pick what each system needs.
+# Install with:  python install.py   (or: pip install -r requirements.txt)
+PySide6>=6.6
+numpy>=1.26
+httpx[http2]>=0.27
+sounddevice>=0.4
+matplotlib>=3.8
+lameenc>=1.7
+
+# macOS: window hiding, Dock icon, system audio (ScreenCaptureKit), screen permission checks
+pyobjc-framework-Cocoa>=10; sys_platform == "darwin"
+pyobjc-framework-Quartz>=10; sys_platform == "darwin"
+pyobjc-framework-ScreenCaptureKit>=10; sys_platform == "darwin"
+pyobjc-framework-CoreMedia>=10; sys_platform == "darwin"
+pyobjc-framework-AVFoundation>=10; sys_platform == "darwin"
+
+# Windows and Linux: system audio (WASAPI loopback / PulseAudio-PipeWire monitor)
+soundcard>=0.4.4; sys_platform == "win32" or sys_platform == "linux"
+
+# Linux: global hotkeys on X11 (pure Python, nothing to compile)
+python-xlib>=0.33; sys_platform == "linux"
